@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+<style>
+
+    .calculator{
+        max-width: 420px;
+        background: #d4d4d4;
+        margin: 0 auto;
+        padding: 40px 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+
+box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 6px 0 rgba(0,0,0,.4),
+    0 10px 20px rgba(0,0,0,.6);
+    }
+
+input{
+    width: 100%;
+    border: none;
+    height: 60px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    color: #000;
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+input:focus{
+    outline: none;
+   
+}
+
+.btns{
+    width: 100%;
+display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.btn{
+    background: linear-gradient(#5f5f5f, #3e3e3e);
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;;
+     cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 6px 0 rgba(0,0,0,.4),
+    0 10px 20px rgba(0,0,0,.6);
+
+  transition: all 0.1s ease;
+}
+
+.btn:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    0 2px 0 rgba(0,0,0,.4),
+    0 4px 8px rgba(0,0,0,.6);
+}
+
+.c_color{
+    background: linear-gradient(#d46f6f, #f86464);
+    box-shadow:
+    inset 0 1px 0 rgba(212,111,111,.2),
+    0 6px 0 rgba(87, 70, 70, 0.4),
+    0 10px 20px rgba(226, 165, 165, 0.6);
+}
+.b_btn{
+    grid-column: 1 / -1;
+}
+</style>
+
+
+
+</head>
+<body>
+    
+
+<div class="calculator">
+    <input id="show_number" type="text" readonly>
+    <div class="btns">
+    <button class="btn c_color" onclick="clearDisplay()">C</button>
+    <button class="btn" onclick="calculatorItem(1)">1</button>
+    <button class="btn" onclick="calculatorItem(2)">2</button>
+    <button class="btn" onclick="calculatorItem(3)">3</button>
+    <button class="btn" onclick="calculatorItem(4)">4</button>
+    <button class="btn" onclick="calculatorItem(5)">5</button>
+    <button class="btn" onclick="calculatorItem(6)">6</button>
+    <button class="btn" onclick="calculatorItem(7)">7</button>
+    <button class="btn" onclick="calculatorItem(8)">8</button>
+    <button class="btn" onclick="calculatorItem(9)">9</button>
+    <button class="btn" onclick="calculatorItem(0)">0</button>
+    <button class="btn " onclick="calculatorItem('+')">+</button>
+    <button class="btn" onclick="calculatorItem('-')">-</button>
+    <button class="btn" onclick="calculatorItem('*')">x</button>
+    <button class="btn" onclick="calculatorItem('/')">/</button>
+    <button class="btn" onclick="delLastItem()">Del</button>
+    <button class="btn b_btn" onclick="equal()">=</button>
+    </div>
+</div>
+
+
+
+
+<script>
+
+function calculatorItem(number){
+    const display = document.getElementById('show_number')
+    display.value += number
+    // document.getElementById('show_number').value += number
+
+}
+
+
+function equal(){
+
+    const display = document.getElementById('show_number')
+    display.value = eval(display.value)
+    //  document.getElementById('show_number').value = eval(document.getElementById('show_number').value)
+}
+
+function clearDisplay() {
+    document.getElementById('show_number').value = '';
+}
+
+function delLastItem(){
+    let display = document.getElementById('show_number');
+    display.value = display.value.slice(0, -1);
+}
+
+
+</script>
+</body>
+</html>
